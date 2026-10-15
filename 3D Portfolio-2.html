@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Instrument+Sans:wght@400;500&display=swap">
+<title>Your Name – Projects & Skills</title>
+<style id="css">
+:root{--bg:#EEF1F6;--surface:#fff;--ink:#16203A;--muted:#55607A;--accent:#2646E6;--on-accent:#fff;--line:#D5DBE8;
+--display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;--body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+--cw:230px;--ch:290px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10162A;--surface:#1A2342;--ink:#EAEEFA;--muted:#9AA6C6;--accent:#8CA6FF;--on-accent:#10162A;--line:#2B3560;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10162A;--surface:#1A2342;--ink:#EAEEFA;--muted:#9AA6C6;--accent:#8CA6FF;--on-accent:#10162A;--line:#2B3560;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--body);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+header b{font:700 1.1rem var(--display)}
+nav{display:flex;gap:20px}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2rem,6vw,3.6rem);max-width:15em;margin-top:28px}
+h2{font-size:clamp(1.5rem,4vw,2.3rem)}
+.lede{color:var(--muted);max-width:34em;margin:14px 0 0}
+.stage{position:relative;height:340px;margin-top:20px;perspective:1100px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.stage.drag{cursor:grabbing}
+.ring{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.card{position:absolute;left:calc(var(--cw)/-2);top:calc(var(--ch)/-2);width:var(--cw);height:var(--ch);display:flex;flex-direction:column;text-align:left;
+padding:12px;gap:4px;border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);font:inherit;backface-visibility:hidden;-webkit-backface-visibility:hidden;cursor:inherit;transition:box-shadow .3s,border-color .3s}
+.card.on{border-color:var(--accent);box-shadow:0 18px 40px -16px var(--accent)}
+.art{flex:1;border-radius:10px;display:grid;place-items:center;font:700 4.2rem var(--display);color:#fff;background-size:cover;background-position:center;
+background-image:linear-gradient(135deg,hsl(var(--h) 80% 58%),hsl(calc(var(--h) + 45) 75% 42%))}
+.card b{font:700 1.05rem var(--display);margin-top:6px}
+.card small{color:var(--muted);font-size:.85rem;line-height:1.35}
+.ctrl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:6px;color:var(--muted);font-size:.9rem}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);width:44px;height:44px;border-radius:50%;font:inherit;font-size:1.2rem;cursor:pointer;flex:none}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.detail{margin:22px 0 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);display:grid;gap:10px}
+.detail h3{font-size:1.4rem}
+.detail p{margin:0;max-width:44em}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:4px 0;list-style:none}
+.tags li{border:1px solid var(--line);border-radius:99px;padding:2px 12px;font-size:.88rem;color:var(--muted)}
+.link{justify-self:start;display:inline-block;background:var(--accent);color:var(--on-accent);padding:10px 18px;border-radius:10px;text-decoration:none;font:500 1rem var(--body);border:0;cursor:pointer}
+section{padding:72px 0 8px}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:20px}
+.sphere{position:relative;height:340px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.sphere span{position:absolute;left:0;top:0;white-space:nowrap;font:700 1rem var(--display);color:var(--accent);will-change:transform}
+.groups{margin:0}
+.groups dt{font:700 1.05rem var(--display);margin-top:16px}
+.groups dt:first-child{margin-top:0}
+.groups dd{margin:2px 0 0;color:var(--muted)}
+.contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.contact a{border:1px solid var(--line);background:var(--surface);padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:500}
+.contact a:hover{border-color:var(--accent);color:var(--accent)}
+footer{padding:56px 0 32px;color:var(--muted);font-size:.9rem}
+footer a{margin-left:12px}
+.modal{position:fixed;inset:0;z-index:50;background:var(--bg);overflow:auto;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.mwrap{max-width:860px;margin:0 auto;padding:20px}
+.mwrap.narrow{max-width:420px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.gal{margin:8px 0 18px}
+.gal .main{width:100%;max-height:60vh;object-fit:cover;border-radius:14px;display:block;background:var(--surface)}
+.thumbs{display:flex;gap:8px;overflow-x:auto;margin-top:8px}
+.thumbs button{padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;width:72px;height:56px;background:none;cursor:pointer;flex:none}
+.thumbs button[aria-current=true]{border-color:var(--accent)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.desc{white-space:pre-wrap;max-width:44em;margin:0 0 12px}
+label{display:grid;gap:4px;margin:12px 0;font-weight:500;font-size:.92rem}
+input,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+fieldset{border:1px solid var(--line);border-radius:14px;margin:16px 0;padding:4px 16px 12px}
+legend{font:700 1.05rem var(--display);padding:0 6px}
+details{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:10px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:700}
+.pri,.sec{font:500 .95rem var(--body);padding:9px 16px;border-radius:10px;cursor:pointer;border:1px solid var(--accent)}
+.pri{background:var(--accent);color:var(--on-accent)}
+.sec{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.sec:hover{border-color:var(--accent)}
+.ph{display:flex;flex-wrap:wrap;gap:12px}
+.ph figure{margin:0;width:120px;display:grid;gap:6px}
+.ph img{width:100%;height:84px;object-fit:cover;border-radius:8px}
+.ph .sec{padding:5px 8px;font-size:.8rem}
+@media (max-width:760px){:root{--cw:200px;--ch:260px}.skills{grid-template-columns:1fr}.stage{height:310px}.sphere{height:300px}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script id="state" type="application/json">{"name":"Fathima Riya Panali","headline":"I build practical tools that people use every day.","intro":"Full-stack developer. Drag the ring to browse my projects, or use the arrows.","email":"fathimariya.panali@gmail.com","github":"https://github.com/fathimariya2006","linkedin":"https://www.linkedin.com/in/fathima-riya-064a423b0","skills":"Frontend: HTML, CSS, JavaScript\nProgramming: C Programming, TypeScript (Basic), Python (Learning)\nCore CS: Data Structures, Algorithms, Problem Solving\nTools: Git, GitHub, VS Code\nPersonal: Creative Thinking, Team Collaboration, Continuous Learning","pw":"","salt":"","projects":[
+  {
+    "t":"Neon Chase Sphere",
+    "s":"Interactive sphere project",
+    "d":"A project built using TypeScript.",
+    "tags":["TypeScript"],
+    "h":270,
+    "url":"https://github.com/fathimariya2006/neon-chase-sphere",
+    "photos":[]
+  },
+  {
+    "t":"Trip Planner",
+    "s":"Plan your trips",
+    "d":"A trip-planning project built using JavaScript.",
+    "tags":["JavaScript"],
+    "h":45,
+    "url":"https://github.com/fathimariya2006/trip-planner",
+    "photos":[]
+  },
+  {
+    "t":"Useless Project",
+    "s":"A creative experimental project",
+    "d":"My useless project competition project.",
+    "tags":["CSS"],
+    "h":285,
+    "url":"https://github.com/fathimariya2006/useless_project_temp",
+    "photos":[]
+  }
+]}</script>
+<script id="code">
+const S=JSON.parse(document.getElementById("state").textContent);
+const CSS=document.getElementById("css").textContent,CODE=document.getElementById("code").textContent;
+const HEAD='<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Instrument+Sans:wght@400;500&display=swap">';
+const $=i=>document.getElementById(i);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const link=u=>{u=String(u||"").trim();return !u?"":/^(https?:|mailto:)/i.test(u)?u:"https://"+u};
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let canEdit=false;
+
+/* Rebuild the whole page (with current data) so it can be republished */
+function build(st){
+  const json=JSON.stringify(st).replace(/</g,"\\u003c");
+  return "<!DOCTYPE html>\n<html lang=\"en\"><head>"+HEAD+"<title>"+esc(st.name)+"</title><style id=\"css\">"+CSS+"</style></head><body><div id=\"app\"></div><script id=\"state\" type=\"application/json\">"+json+"<\/script><script id=\"code\">"+CODE+"<\/script></body></html>";
+}
+const groups=()=>S.skills.split("\n").map(l=>{const i=l.indexOf(":");return i<0?null:{g:l.slice(0,i).trim(),items:l.slice(i+1).split(",").map(x=>x.trim()).filter(Boolean)}}).filter(x=>x&&x.items.length);
+
+/* ---------- public page ---------- */
+function render(){
+  document.title=S.name+" – Projects & Skills";
+  const gs=groups(),P=S.projects,cl=[];
+  if(S.email)cl.push(["mailto:"+S.email,S.email]);
+  if(S.github)cl.push([link(S.github),"GitHub"]);
+  if(S.linkedin)cl.push([link(S.linkedin),"LinkedIn"]);
+  $("app").innerHTML='<div class="wrap"><header><b>'+esc(S.name)+'</b><nav><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></header><main>'
+  +'<h1 id="projects">'+esc(S.headline)+'</h1><p class="lede">'+esc(S.intro)+'</p>'
+  +(P.length?'<div class="stage" id="stage" tabindex="0" role="group" aria-label="Project carousel. Use the left and right arrow keys to browse."><div class="ring" id="ring"></div></div><div class="ctrl" id="ctrl"><button class="btn" id="prev" aria-label="Previous project">‹</button><span id="count"></span><button class="btn" id="next" aria-label="Next project">›</button></div><article class="detail" aria-live="polite"><h3 id="dt"></h3><p id="dd"></p><ul class="tags" id="dtags"></ul><button class="link" id="open">Open project</button></article>':'<p class="lede">Projects will appear here soon.</p>')
+  +'<section id="skills"><h2>Skills</h2><div class="skills"><div class="sphere" id="sphere" aria-hidden="true"></div><dl class="groups">'+gs.map(g=>'<dt>'+esc(g.g)+'</dt><dd>'+esc(g.items.join(", "))+'</dd>').join("")+'</dl></div></section>'
+  +'<section id="contact"><h2>Let\'s work together</h2><p class="lede">Have a project in mind or a role to fill? Send a message.</p><div class="contact">'+cl.map(c=>'<a href="'+esc(c[0])+'">'+esc(c[1])+'</a>').join("")+'</div></section></main><footer>© '+esc(S.name)+'<a id="admlink" href="#admin" hidden>Admin</a></footer></div>';
+  document.body.insertAdjacentHTML("beforeend",'<div class="modal" id="modal" hidden role="dialog" aria-modal="true"></div><div class="modal" id="adm" hidden role="dialog" aria-modal="true" aria-label="Admin"></div>');
+}
+
+/* project page */
+function openProject(i){
+  const p=S.projects[i],m=$("modal");m.innerHTML="";
+  const w=el("div","mwrap"),bar=el("div","bar");
+  bar.append(el("h2",null,p.t));
+  const x=el("button","btn","×");x.setAttribute("aria-label","Close project");x.onclick=closeProject;bar.append(x);w.append(bar);
+  if(p.photos&&p.photos.length){
+    const g=el("div","gal"),main=el("img","main"),th=el("div","thumbs");main.alt=p.t+" photo";
+    const sel=k=>{main.src=p.photos[k];[...th.children].forEach((b,j)=>b.setAttribute("aria-current",j===k))};
+    p.photos.forEach((src,k)=>{const b=el("button");b.setAttribute("aria-label","Show photo "+(k+1));const im=el("img");im.src=src;im.alt="";b.append(im);b.onclick=()=>sel(k);th.append(b)});
+    g.append(main);if(p.photos.length>1)g.append(th);w.append(g);sel(0);
+  }
+  w.append(el("p","desc",p.d||p.s||""));
+  const tg=el("ul","tags");(p.tags||[]).forEach(t=>tg.append(el("li",null,t)));w.append(tg);
+  if(link(p.url)){const a=el("a","link","Visit project");a.href=link(p.url);a.target="_blank";a.rel="noopener";w.append(a)}
+  m.append(w);m.hidden=false;document.body.style.overflow="hidden";x.focus();
+}
+function closeProject(){$("modal").hidden=true;document.body.style.overflow=""}
+
+/* ---------- 3D ring ---------- */
+let N=0,step=0,R=300,ring,stage,cards=[],ang=0,vel=0,target=0,drag=false,touched=false,active=-1,moved=0,lx=0;
+function ringInit(){
+  const P=S.projects;N=P.length;step=360/N;ring=$("ring");stage=$("stage");
+  P.forEach((p,i)=>{
+    const b=el("button","card"),has=p.photos&&p.photos[0],art=el("span","art",has?"":(p.t||"?").charAt(0).toUpperCase());
+    b.style.setProperty("--h",p.h==null?210:p.h);
+    if(has)art.style.backgroundImage='url("'+p.photos[0]+'")';
+    b.append(art,el("b",null,p.t),el("small",null,p.s));
+    b.onclick=()=>{if(moved<6){i===active?openProject(i):goTo(i)}};
+    ring.append(b);cards.push(b);
+  });
+  stage.addEventListener("pointerdown",e=>{drag=true;touched=true;moved=0;lx=e.clientX;stage.classList.add("drag")});
+  stage.addEventListener("keydown",e=>{if(e.key==="ArrowRight")nudge(-1);if(e.key==="ArrowLeft")nudge(1)});
+  $("open").onclick=()=>openProject(active);$("next").onclick=()=>nudge(-1);$("prev").onclick=()=>nudge(1);
+  if(N<2)$("ctrl").hidden=true;
+  layout();addEventListener("resize",layout);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+}
+function layout(){
+  const w=cards[0].offsetWidth;R=Math.round(w/2/Math.tan(Math.PI/Math.max(N,5))*1.12)+14;
+  cards.forEach((c,i)=>c.style.transform="rotateY("+i*step+"deg) translateZ("+R+"px)");
+}
+const norm=a=>((a+180)%360+360)%360-180;
+function goTo(i){touched=true;target=ang+norm(-i*step-ang)}
+function nudge(d){touched=true;target=Math.round(ang/step)*step+d*step}
+function show(i){
+  const p=S.projects[i];$("dt").textContent=p.t;$("dd").textContent=p.s||"";
+  $("dtags").innerHTML=(p.tags||[]).map(t=>"<li>"+esc(t)+"</li>").join("");
+  $("count").textContent=(i+1)+" of "+N;cards.forEach((c,k)=>c.classList.toggle("on",k===i));
+}
+
+/* ---------- skills sphere ---------- */
+let pts=[],sx=.3,sy=0,svx=0,svy=.004,sdrag=false,slx=0,sly=0,sph;
+function sphereInit(words){
+  sph=$("sphere");
+  words.forEach((s,i)=>{
+    const n=words.length,y=1-2*(i+.5)/n,r=Math.sqrt(1-y*y),ph=i*2.399963,e=el("span",null,s);
+    sph.append(e);pts.push({x:Math.cos(ph)*r,y,z:Math.sin(ph)*r,el:e});
+  });
+  sph.addEventListener("pointerdown",e=>{sdrag=true;slx=e.clientX;sly=e.clientY;sph.style.cursor="grabbing"});
+}
+function drawSphere(){
+  if(!pts.length)return;
+  const w=sph.clientWidth,h=sph.clientHeight,rad=Math.max(40,Math.min(w/2-40,h/2-24));
+  if(!sdrag){sy+=svy;sx+=svx;svx*=.96;svy+=((reduce?0:.004)-svy)*.02}
+  const cx=Math.cos(sx),sxs=Math.sin(sx),cy=Math.cos(sy),sys=Math.sin(sy);
+  pts.forEach(p=>{
+    const x1=p.x*cy+p.z*sys,z1=-p.x*sys+p.z*cy,y2=p.y*cx-z1*sxs,z2=p.y*sxs+z1*cx,sc=.7+.45*(z2+1)/2;
+    p.el.style.transform="translate("+(w/2+x1*rad)+"px,"+(h/2+y2*rad)+"px) translate(-50%,-50%) scale("+sc.toFixed(3)+")";
+    p.el.style.opacity=(.3+.7*(z2+1)/2).toFixed(2);
+  });
+}
+addEventListener("pointermove",e=>{
+  if(drag){const dx=e.clientX-lx;lx=e.clientX;moved+=Math.abs(dx);ang+=dx*.35;vel=dx*.35}
+  if(sdrag){const dx=e.clientX-slx,dy=e.clientY-sly;slx=e.clientX;sly=e.clientY;svy=dx*.0015;svx=-dy*.0015;sy+=dx*.008;sx-=dy*.008}
+});
+function up(){
+  if(drag){drag=false;stage.classList.remove("drag");target=Math.round((ang+vel*8)/step)*step;vel=0}
+  if(sdrag){sdrag=false;sph.style.cursor="grab"}
+}
+addEventListener("pointerup",up);addEventListener("pointercancel",up);
+function frame(){
+  if(N){
+    if(!drag){if(!touched){if(!reduce&&N>1){ang-=.12;target=ang}}else ang+=(target-ang)*.12}
+    ring.style.transform="translateZ(-"+R+"px) rotateY("+ang.toFixed(2)+"deg)";
+    const i=((Math.round(-ang/step)%N)+N)%N;if(i!==active){active=i;show(i)}
+  }
+  drawSphere();requestAnimationFrame(frame);
+}
+
+/* ---------- admin ---------- */
+const say=m=>{const n=$("msg");if(n)n.textContent=m};
+const lock=()=>{$("adm").hidden=true;document.body.style.overflow="";try{sessionStorage.removeItem("admopen")}catch(e){}};
+function hash(p,s){
+  const t=s+":"+p;
+  if(!(window.crypto&&crypto.subtle&&window.TextEncoder))return Promise.resolve("f"+[...t].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7).toString(16));
+  return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join(""));
+}
+const unlock=()=>{try{sessionStorage.setItem("adm","1")}catch(e){}};
+function openAdmin(){
+  $("adm").hidden=false;document.body.style.overflow="hidden";
+  if(!canEdit)return gate("Only the page owner can edit. Open this page while signed in to the owner's Claude account.");
+  let ok=false;try{ok=sessionStorage.getItem("adm")==="1"}catch(e){}
+  if(ok&&S.pw)return editor();
+  gate();
+}
+function gate(note){
+  const a=$("adm"),first=!S.pw;
+  a.innerHTML='<div class="mwrap narrow"><div class="bar"><h2>'+(first?"Create an admin password":"Admin")+'</h2><button class="btn" data-act="close" aria-label="Close">×</button></div>'
+  +(note?'<p>'+esc(note)+'</p>':'<form id="gf"><label>Password<input type="password" id="pw" autocomplete="'+(first?"new-password":"current-password")+'"></label>'+(first?'<label>Repeat password<input type="password" id="pw2" autocomplete="new-password"></label>':'')+'<p id="gm" role="status"></p><button class="pri" type="submit">'+(first?"Create password":"Unlock")+'</button></form>')+'</div>';
+  const f=$("gf");if(!f)return;
+  f.onsubmit=async e=>{
+    e.preventDefault();const p=$("pw").value,m=$("gm");
+    if(first){
+      if(p.length<6){m.textContent="Use at least 6 characters.";return}
+      if(p!==$("pw2").value){m.textContent="The passwords don't match.";return}
+      S.salt=Math.random().toString(36).slice(2);S.pw=await hash(p,S.salt);unlock();editor();
+    }else if(await hash(p,S.salt)===S.pw){unlock();editor()}else m.textContent="Wrong password.";
+  };
+  $("pw").focus();
+}
+const fld=(l,f,v,ta,p)=>'<label>'+l+(ta?'<textarea':'<input')+' data-f="'+f+'"'+(p!=null?' data-p="'+p+'"':'')+(ta?' rows="'+ta+'">'+esc(v)+'</textarea>':' value="'+esc(v)+'">')+'</label>';
+let openP=-1;
+function editor(){
+  $("adm").innerHTML='<div class="mwrap"><div class="bar"><h2>Edit portfolio</h2><div class="acts"><button class="pri" data-act="save">Save and publish</button><button class="sec" data-act="close">Close</button></div></div><p id="msg" role="status">Changes go live when you save and publish.</p>'
+  +'<fieldset><legend>About you</legend>'+fld("Name","name",S.name)+fld("Headline","headline",S.headline)+fld("Intro line","intro",S.intro)+fld("Email","email",S.email)+fld("GitHub link","github",S.github)+fld("LinkedIn link","linkedin",S.linkedin)+fld("Skills (one group per line, like Frontend: HTML, CSS)","skills",S.skills,5)+'</fieldset>'
+  +'<h3>Projects</h3><div id="plist"></div><p><button class="sec" data-act="add">Add project</button></p>'
+  +'<fieldset><legend>Password</legend><label>New password<input type="password" id="npw" autocomplete="new-password"></label><button class="sec" data-act="pw">Change password</button></fieldset></div>';
+  plist();
+}
+function plist(){
+  $("plist").innerHTML=S.projects.map((p,i)=>'<details'+(i===openP?" open":"")+'><summary>'+esc(p.t||"Untitled project")+'</summary>'
+  +fld("Title","t",p.t,0,i)+fld("Short line (shown on the card)","s",p.s,0,i)+fld("Full description","d",p.d,6,i)+fld("Tech tags, separated by commas","tags",(p.tags||[]).join(", "),0,i)+fld("Project link (optional)","url",p.url,0,i)
+  +'<p>Photos (the first one is the cover)</p><div class="ph">'+(p.photos||[]).map((s,k)=>'<figure><img src="'+s+'" alt=""><button class="sec" data-act="pdel" data-p="'+i+'" data-i="'+k+'">Remove</button>'+(k?'<button class="sec" data-act="pcover" data-p="'+i+'" data-i="'+k+'">Make cover</button>':'')+'</figure>').join("")+'</div>'
+  +'<label>Add photos (up to 8)<input type="file" accept="image/*" multiple data-act="photos" data-p="'+i+'"></label>'
+  +'<div class="acts"><button class="sec" data-act="up" data-p="'+i+'">Move up</button><button class="sec" data-act="down" data-p="'+i+'">Move down</button><button class="sec" data-act="del" data-p="'+i+'">Delete project</button></div></details>').join("")||"<p>No projects yet.</p>";
+}
+function shrink(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1100/Math.max(im.width,im.height)),c=el("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.78))};im.onerror=rej;im.src=r.result};
+    r.onerror=rej;r.readAsDataURL(file);
+  });
+}
+async function save(){
+  say("Publishing…");
+  try{
+    const art=window.claude&&claude.use?await claude.use("artifact"):null;
+    if(!art){say("Publishing isn't available in this view. Open the page from your Claude account.");return}
+    S.projects.forEach(p=>{p.t=p.t||"Untitled project"});
+    try{sessionStorage.setItem("admopen","1")}catch(e){}
+    await art.publish(build(S));say("Published.");
+  }catch(err){
+    const c=err&&err.code;
+    say(c==="not_writer"||c==="not_granted"?"Only the page owner can publish changes.":c==="too_large"?"The page is too large. Remove some photos and try again.":c==="rate_limited"?"Too many saves. Wait a moment and try again.":c==="conflict"?"The page changed elsewhere and is reloading.":"Couldn't publish. Try again.");
+  }
+}
+function adminInit(){
+  const a=$("adm");
+  a.addEventListener("input",e=>{
+    const t=e.target,f=t.dataset.f;if(!f)return;
+    if(t.dataset.p!=null){
+      const p=S.projects[+t.dataset.p];p[f]=f==="tags"?t.value.split(",").map(x=>x.trim()).filter(Boolean):t.value;
+      if(f==="t")t.closest("details").querySelector("summary").textContent=t.value||"Untitled project";
+    }else S[f]=t.value;
+  });
+  a.addEventListener("click",async e=>{
+    const b=e.target.closest("[data-act]");if(!b||b.type==="file")return;
+    const act=b.dataset.act,i=+b.dataset.p,k=+b.dataset.i,P=S.projects;
+    if(act==="close")lock();
+    else if(act==="save")save();
+    else if(act==="add"){P.push({t:"New project",s:"",d:"",tags:[],h:Math.floor(Math.random()*360),url:"",photos:[]});openP=P.length-1;plist()}
+    else if(act==="up"&&i>0){[P[i-1],P[i]]=[P[i],P[i-1]];openP=i-1;plist()}
+    else if(act==="down"&&i<P.length-1){[P[i+1],P[i]]=[P[i],P[i+1]];openP=i+1;plist()}
+    else if(act==="del"){
+      if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Click again to delete";return}
+      P.splice(i,1);openP=-1;plist();
+    }
+    else if(act==="pdel"){P[i].photos.splice(k,1);openP=i;plist()}
+    else if(act==="pcover"){const ph=P[i].photos;ph.unshift(ph.splice(k,1)[0]);openP=i;plist()}
+    else if(act==="pw"){
+      const v=$("npw").value;if(v.length<6){say("Use at least 6 characters.");return}
+      S.salt=Math.random().toString(36).slice(2);S.pw=await hash(v,S.salt);$("npw").value="";say("Password changed. Save and publish to keep it.");
+    }
+  });
+  a.addEventListener("change",async e=>{
+    const t=e.target;if(t.dataset.act!=="photos")return;
+    const i=+t.dataset.p,p=S.projects[i];p.photos=p.photos||[];
+    const files=[...t.files].slice(0,Math.max(0,8-p.photos.length));
+    say("Adding photos…");
+    for(const f of files){try{p.photos.push(await shrink(f))}catch(x){}}
+    openP=i;plist();say("Photos added. Save and publish to keep them.");
+  });
+}
+
+/* ---------- start ---------- */
+render();adminInit();
+if(S.projects.length)ringInit();
+{const w=groups().reduce((a,g)=>a.concat(g.items),[]);if(w.length)sphereInit(w)}
+frame();
+addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("adm").hidden)lock();else if(!$("modal").hidden)closeProject()}});
+const al=$("admlink");al.onclick=e=>{e.preventDefault();openAdmin()};
+if(location.hash==="#admin")al.hidden=false;
+if(window.claude&&claude.use)claude.use("user").then(u=>{
+  if(u&&u.canEdit&&u.canEdit()){
+    canEdit=true;al.hidden=false;
+    let r=false;try{r=sessionStorage.getItem("admopen")==="1"}catch(e){}
+    if(r)openAdmin();
+  }
+}).catch(()=>{});
+</script>
+</body>
+</html>
